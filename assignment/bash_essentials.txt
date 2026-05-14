@@ -1,0 +1,45 @@
+Week 5 - Bash essentials
+
+Question 1.
+Answer:
+
+All the outputs are the same. Bash is listing all files in the current directory. 
+The third command uses $(pwd), which expands to the absolute path of the current directory, 
+then navigates up one level with .. and back into for_bash_essentials, ending up in the same directory.
+
+Question 2.
+Answer:
+The second command only prints the number because cat concatenates all CSV files and pipes the output to wc -l. 
+Since wc -l receives no file names, it prints just the total line count.
+
+Question 3.
+Answer:
+wc -l counts only a.csv because it was given an explicit file argument. 
+The piped input cat *.csv is ignored since wc -l already has a file to read from.
+
+Question 4.
+Answer:
+You can use curly braces wrapped around the variable
+e.g.: echo "${name}_Howard"
+
+Question 5.
+Answer:
+For the variable $1 it shows the first CSV filename (e.g. a.csv). 
+For the variable $# it shows the total number of CSV files in the directory (e.g. 5). 
+The script does not see only one argument because the asterisk works like a wildcard, where *.csv gets expanded into a list of all CSVs in the directory before being passed to the script.
+
+Question 6.
+Answer:
+The value for $1 is the full date string as one argument
+The value for $3 is the third word of the date output
+
+Question 7.
+Answer:
+I got an empty file, it happened because the > signal can be destructive. In this case, bash overwrites the existing file with an empty file before the program is run
+You can fix it by overwriting in a temporary file and then replacing it with mv
+e.g. 
+sort junk_file.txt > tmpfile
+mv tmpfile junk_file.txt
+
+Question 8.
+It will delete every file in the current directory

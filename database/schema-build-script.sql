@@ -21,7 +21,7 @@ COPY Site FROM 'site.csv' (header TRUE);
 
 CREATE TABLE Personnel (
     Abbreviation VARCHAR PRIMARY KEY,
-    Name VARCHAR UNIQUE NOT NULL
+    Name VARCHAR NOT NULL
 );
 COPY Personnel FROM 'personnel.csv' (header TRUE);
 
