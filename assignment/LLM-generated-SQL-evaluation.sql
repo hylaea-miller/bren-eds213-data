@@ -41,5 +41,8 @@ HAVING COUNT(bn.Nest_ID) = 36;
 
 -- 1. All three queries return the expected result
 -- 2. Both Gemini and ChatGPT used COUNT(Nest_ID), not identifying that Nest_ID  is a primary key and cannot be NULL, making COUNT(*) sufficient.
--- ChatGPT went further by adding DISTINCT to the count, missing the meaning of a primary key and making the query redundant.
--- The rest of the queries were nearly identical, with Claude having the best understanding of the database.
+-- ChatGPT went further by adding DISTINCT to the count of Nest_ID, missing the meaning of a primary key and making the query redundant.
+
+-- Since the unique constraint was removed from Personnel.Name, grouping by the 
+-- name column could produce incorrect results if two observers share the same name.
+-- None of the three LLMs accounted for this, not representing a good understanding of the database schema.
